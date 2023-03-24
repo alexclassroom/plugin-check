@@ -59,6 +59,7 @@
 	/**
 	 * Run Checks.
 	 *
+	 * @param {Object} data Data object with props passed to form data.
 	 * @since n.e.x.t
 	 */
 	function runChecks( data ) {
@@ -77,13 +78,13 @@
 				return response.json();
 			} )
 			.then( handleDataErrors )
-			.then( ( data ) => {
+			.then( ( responseData ) => {
 				// If the response is successful and there is no message in the response.
-				if ( ! data.data || ! data.data.message ) {
+				if ( ! responseData.data || ! responseData.data.message ) {
 					throw new Error( 'Response contains no data' );
 				}
 
-				return data.data;
+				return responseData.data;
 			} );
 	}
 
